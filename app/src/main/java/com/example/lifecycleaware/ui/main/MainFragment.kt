@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import com.example.lifecycleaware.BR.myviewModel
+import com.example.lifecycleaware.databinding.MainFragmentBinding
 import com.example.lifecycleaware.R
 
 import com.example.lifecycleaware.Observer
@@ -18,12 +21,16 @@ class MainFragment : Fragment() {
     }
 
     private lateinit var viewModel: MainViewModel
+    lateinit var binding: MainFragmentBinding
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.main_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.main_fragment, container, false)
+        binding.setLifecycleOwner(this)
+        return binding.root
     }
 
     private lateinit var Owner: Owner
@@ -31,6 +38,7 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        binding.setVariable(myViewModel, viewModel)
 
         Owner = Owner()
         Owner.startOwner()

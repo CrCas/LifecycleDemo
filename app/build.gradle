@@ -2,14 +2,16 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
-    dataBinding{
-        enabled = true
+    buildFeatures {
+        viewBinding true
+        dataBinding true
     }
     compileSdk 32
-
+    buildToolsVersion "30.0.3"
     defaultConfig {
         applicationId "com.example.lifecycleaware"
         minSdk 26
