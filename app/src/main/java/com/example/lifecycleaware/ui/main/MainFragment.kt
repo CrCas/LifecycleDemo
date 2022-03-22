@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import com.example.lifecycleaware.BR.myviewModel
+import com.example.lifecycleaware.BR.myViewModel
 import com.example.lifecycleaware.databinding.MainFragmentBinding
 import com.example.lifecycleaware.R
 
